@@ -10,7 +10,7 @@ Wikimedia Foundation
 Dataset ini dikembangkan untuk mendukung analisis trafik web, penelitian big data, dan pengembangan sistem prediksi berbasis data.
  Dapat diakses melalui:
  • kaggle : https://www.kaggle.com/datasets/vladtasca/wikipedia-pageviews
- • Harvard dataverse : https://dumps.wikimedia.org/other/pageviews
+ • Wikipedia Dumps : https://dumps.wikimedia.org/other/pageviews
 
 
 
