@@ -1,5 +1,8 @@
 # Wikipedia Page Views Analysis using Wikipedia Big Data Dataset
 
+# Link Dataset Gabungan (Hasil Scrapping)
+Kaggle : https://www.kaggle.com/datasets/purikhairunisa/dataset-gabungan-csv/data
+
 # Project Overview
 Project ini bertujuan untuk membangun model machine learning / data analytics dalam menganalisis jumlah kunjungan artikel Wikipedia berdasarkan waktu menggunakan dataset Wikipedia Page Views.
 Dataset ini berisi data jumlah kunjungan artikel Wikipedia pada berbagai timestamp, yang dapat digunakan untuk menganalisis pola trafik pengguna, tren popularitas artikel, dan prediksi jumlah kunjungan di masa depan.
