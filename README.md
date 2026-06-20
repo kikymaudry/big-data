@@ -1,293 +1,290 @@
-# Wikipedia Page Views Analysis using Wikipedia Big Data Dataset
+# 📊 Wikipedia Page Views Analysis using Wikipedia Big Data Dataset
 
-# Link Dataset Gabungan (Hasil Scrapping)
-Kaggle : https://www.kaggle.com/datasets/purikhairunisa/dataset-gabungan-csv/data
+Analisis Big Data terhadap Wikipedia Page Views menggunakan dataset Wikipedia English dan Wikipedia Indonesia hasil scraping.
 
-# Link Dashboard
+---
+
+## 📂 Link Dataset Gabungan (Hasil Scraping)
+
+Kaggle :
+https://www.kaggle.com/datasets/purikhairunisa/dataset-gabungan-csv/data
+
+---
+
+## 🌐 Dashboard
+
 https://khai2094.github.io/dashboard-gacha/
 
-# Project Overview
+---
 
-Project ini bertujuan untuk membangun model machine learning / data analytics dalam menganalisis jumlah kunjungan artikel Wikipedia berdasarkan waktu menggunakan dataset Wikipedia Page Views.
-Dataset ini berisi data jumlah kunjungan artikel Wikipedia pada berbagai timestamp, yang dapat digunakan untuk menganalisis pola trafik pengguna, tren popularitas artikel, dan prediksi jumlah kunjungan di masa depan.
+## 📑 Table of Contents
 
-### 🚀 Pengembangan pada Tahap EAS
+- Project Overview
+- Sumber Data
+- Objectives
+- Tujuan Analisis
+- Dataset
+- Big Data Characteristics (UTS)
+- 🚀 Update EAS
+- Hasil Analisis
+- Dashboard
+- Tech Stack
+- Repository Structure
+- Kesimpulan
 
-Pada tahap EAS, proyek dikembangkan dengan melakukan **scraping data Wikipedia bahasa Indonesia** menggunakan **Wikimedia Pageviews API**. Data hasil scraping kemudian digabungkan dengan dataset Wikipedia Page Views berbahasa Inggris sehingga menghasilkan dataset gabungan yang memiliki cakupan lebih luas.
+- ## 🚀 Update EAS
 
-Selain peningkatan volume data, analisis juga dikembangkan dari sebelumnya hanya berfokus pada karakteristik **5V** menjadi **8V (Volume, Velocity, Variety, Veracity, Value, Validity, Variability, dan Visualization)**. Pengembangan ini juga dilengkapi dengan dashboard interaktif sehingga hasil analisis dapat dieksplorasi dengan lebih mudah.
+Tahap EAS merupakan pengembangan dari proyek UTS.
+
+Jika pada UTS analisis hanya menggunakan dataset Wikipedia Page Views berbahasa Inggris, maka pada tahap EAS dilakukan pengembangan dengan melakukan scraping Wikipedia Bahasa Indonesia menggunakan Wikimedia Pageviews API, kemudian menggabungkan kedua dataset menjadi satu dataset berskala lebih besar.
+
+Selain penambahan dataset, dilakukan pula optimalisasi preprocessing menggunakan Polars LazyFrame agar proses pengolahan data menjadi lebih efisien meskipun ukuran dataset meningkat hampir dua kali lipat.
+
+Tahap EAS juga memperluas analisis Big Data dari 5V menjadi 8V dengan menambahkan Validity, Variability, dan Visualization, sehingga analisis menjadi lebih komprehensif.
+
+## 🚀 Update EAS
+
+Selain menggunakan dataset Wikipedia Page Views dari Kaggle sebagai dataset utama, pada tahap EAS dilakukan proses scraping tambahan terhadap Wikipedia Bahasa Indonesia menggunakan Wikimedia Pageviews API.
+
+Dataset hasil scraping kemudian digabungkan dengan dataset utama sehingga menghasilkan dataset baru yang merepresentasikan artikel Wikipedia dari dua bahasa.
+
+## 🚀 Objectives EAS
+
+Pengembangan pada tahap EAS memiliki beberapa tujuan tambahan, yaitu:
+
+- Melakukan scraping data Wikipedia Indonesia.
+- Menggabungkan dataset English dan Indonesia.
+- Menganalisis karakteristik Big Data menggunakan konsep 8V.
+- Membandingkan artikel internasional dan artikel Indonesia.
+- Mengembangkan dashboard interaktif.
+
+- ## 🚀 Tujuan Analisis EAS
+
+Selain tujuan pada tahap UTS, tahap EAS menambahkan beberapa analisis baru, yaitu:
+
+- Mengidentifikasi artikel populer pada Wikipedia Indonesia.
+- Menganalisis artikel Prabowo Subianto berdasarkan jumlah page views.
+- Membandingkan hasil analisis Wikipedia English dan Wikipedia Indonesia.
+- Menampilkan visualisasi interaktif untuk mempermudah eksplorasi data.
+
+- ## 🚀 Update Dataset
+
+### Dataset UTS
+
+| Keterangan | Nilai |
+|------------|------:|
+| Bahasa | English |
+| Jumlah Baris | 64.944.259 |
+| Jumlah Kolom | 6 |
+| Ukuran | ±2.9 GB |
 
 ---
 
-# Sumber Data
+### Dataset EAS
 
-Dataset Wikipedia Page Views berasal dari data trafik Wikipedia yang dipublikasikan secara terbuka oleh:
+Dataset EAS merupakan hasil penggabungan dataset Wikipedia English dan hasil scraping Wikipedia Indonesia.
 
-Wikimedia Foundation
+| Keterangan | Nilai |
+|------------|------:|
+| Bahasa | English + Indonesia |
+| Jumlah Baris | ±125 juta |
+| Jumlah Kolom | 3 |
+| Ukuran | ±3.96 GB |
 
-Dataset ini dikembangkan untuk mendukung analisis trafik web, penelitian big data, dan pengembangan sistem prediksi berbasis data.
+Dataset gabungan ini memungkinkan analisis dilakukan tidak hanya terhadap artikel internasional, tetapi juga artikel nasional seperti Prabowo Subianto.
 
-Dapat diakses melalui:
+## 🚀 Update EAS
 
-• Kaggle : https://www.kaggle.com/datasets/vladtasca/wikipedia-pageviews
+Pada tahap EAS, dilakukan penggabungan dataset Wikipedia English dengan hasil scraping Wikipedia Indonesia sehingga volume data meningkat secara signifikan.
 
-• Wikipedia Dumps : https://dumps.wikimedia.org/other/pageviews
+| Tahap | Jumlah Baris | Ukuran |
+|------|-------------:|-------:|
+| UTS | 64.944.259 | ±2.9 GB |
+| EAS | ±125 juta | ±3.96 GB |
 
-### 🚀 Pengembangan pada Tahap EAS
+Peningkatan volume ini menunjukkan bahwa dataset menjadi hampir dua kali lebih besar dibandingkan tahap UTS. Meskipun ukuran data meningkat, proses pengolahan tetap dapat dilakukan secara efisien dengan memanfaatkan **Polars LazyFrame**, sehingga penggunaan memori tetap terkendali.
 
-Selain menggunakan dataset Wikipedia Page Views dari Kaggle, tahap EAS juga memanfaatkan **Wikimedia Pageviews API** sebagai sumber data untuk melakukan scraping artikel Wikipedia bahasa Indonesia.
+Grafik perbandingan volume juga menunjukkan peningkatan jumlah record setelah dataset Wikipedia Indonesia berhasil digabungkan.
 
-Data hasil scraping kemudian digabungkan dengan dataset utama sehingga menghasilkan dataset baru yang mencakup artikel Wikipedia berbahasa Inggris maupun Indonesia. Dengan demikian, analisis tidak lagi terbatas pada satu bahasa, tetapi mampu menggambarkan perilaku pengguna Wikipedia secara lebih luas.
+## 🚀 Update EAS
 
----
+Karakteristik velocity tetap dipertahankan pada tahap EAS karena kedua dataset memiliki pola pembaruan data yang sama, yaitu berdasarkan timestamp harian.
 
-# Objectives
+Hasil analisis menunjukkan bahwa data diperbarui secara rutin dengan interval sekitar satu hari dan seluruh data direkam pada jam yang sama (00.00 UTC). Hal ini menunjukkan bahwa proses pengumpulan data berlangsung secara terjadwal dan konsisten.
 
-1. Mengembangkan model analisis jumlah kunjungan artikel Wikipedia.
+Selain itu, setelah dataset Indonesia digabungkan, pola perubahan jumlah page views tetap bersifat dinamis. Artikel-artikel tertentu mengalami lonjakan pada periode tertentu sesuai dengan peristiwa yang sedang terjadi, sedangkan artikel lainnya memiliki pola yang relatif stabil.
 
-2. Mengidentifikasi pola trafik pengguna.
+Dengan demikian, karakteristik velocity tetap tergolong tinggi karena data terus mengalami perubahan seiring waktu serta diperbarui secara berkala.
 
-3. Menganalisis tren popularitas artikel.
+## 🚀 Update EAS
 
-4. Mengevaluasi performa model prediksi.
+Tahap EAS memberikan peningkatan pada aspek variety karena data tidak lagi hanya berasal dari Wikipedia English, tetapi juga mencakup Wikipedia Indonesia.
 
-5. Mengembangkan model prediksi trafik berbasis waktu.
+Selain keberagaman bahasa, variasi data juga meningkat karena artikel yang dianalisis berasal dari berbagai kategori, seperti politik, sejarah, olahraga, hiburan, teknologi, dan tokoh nasional maupun internasional.
 
-### 🚀 Pengembangan pada Tahap EAS
+Walaupun dataset hasil gabungan hanya terdiri atas tiga atribut utama (article, timestamp, dan views), keberagaman isi data menjadi jauh lebih luas dibandingkan tahap UTS sehingga analisis yang dihasilkan menjadi lebih representatif.
 
-Pengembangan yang dilakukan pada tahap EAS meliputi:
+## 🚀 Update EAS
 
-6. Melakukan scraping data Wikipedia bahasa Indonesia menggunakan Wikimedia Pageviews API.
+Setelah proses scraping dan penggabungan dataset dilakukan, tahap preprocessing kembali diterapkan untuk memastikan kualitas data tetap terjaga.
 
-7. Menggabungkan dataset Wikipedia English dan Wikipedia Indonesia menjadi satu dataset.
+Proses tersebut meliputi:
 
-8. Menganalisis karakteristik Big Data menggunakan konsep **8V**.
+- pemeriksaan missing value,
+- pengecekan data duplikat,
+- validasi tipe data,
+- serta penyaringan artikel non-ensiklopedis seperti Main_Page, Special, Portal, Template, dan artikel administratif lainnya.
 
-9. Menganalisis artikel Indonesia seperti **Prabowo Subianto** sebagai pembanding terhadap artikel internasional.
+Dengan proses tersebut, dataset hasil gabungan memiliki kualitas data yang lebih baik sehingga layak digunakan untuk proses analisis Big Data.
 
-10. Mengembangkan dashboard interaktif untuk mempermudah visualisasi hasil analisis.
+## 🚀 Update EAS
 
----
+Pada tahap EAS, nilai (value) yang diperoleh tidak hanya berasal dari artikel Wikipedia English, tetapi juga dari artikel Wikipedia Indonesia.
 
-# Tujuan Analisis
+Selain mengidentifikasi artikel dengan jumlah page views tertinggi, dilakukan pula analisis terhadap artikel nasional seperti **Prabowo Subianto**. Analisis menunjukkan bahwa perubahan jumlah page views suatu artikel sangat dipengaruhi oleh peristiwa yang sedang terjadi.
 
-1. Mengidentifikasi artikel populer berdasarkan jumlah kunjungan (views).
+Hasil tersebut memperlihatkan bahwa data Wikipedia Page Views dapat dimanfaatkan untuk mengidentifikasi topik yang sedang menjadi perhatian masyarakat baik pada tingkat nasional maupun internasional.
 
-2. Menganalisis tren dan pola akses artikel berdasarkan waktu.
+Dengan adanya dataset gabungan, insight yang diperoleh menjadi lebih kaya dibandingkan tahap UTS karena mampu menggambarkan perilaku pengguna dari dua sumber data yang berbeda.
 
-3. Mendeteksi lonjakan (spike) popularitas pada artikel tertentu.
+# Validity
 
-4. Memahami perilaku pengguna berdasarkan data pageviews.
+Validity mengukur apakah data yang digunakan benar-benar sesuai dengan kebutuhan analisis.
 
-### 🚀 Pengembangan pada Tahap EAS
+Pada tahap EAS dilakukan validasi terhadap seluruh atribut yang digunakan, meliputi:
 
-Pada tahap EAS, tujuan analisis diperluas dengan:
+- tipe data setiap kolom,
+- rentang nilai timestamp,
+- nilai minimum dan maksimum page views,
+- jumlah artikel unik,
+- serta konsistensi struktur dataset.
 
-- Mengidentifikasi artikel populer dari Wikipedia Indonesia dan Wikipedia English secara bersamaan.
-- Menganalisis perubahan popularitas artikel Indonesia, khususnya **Prabowo Subianto**, berdasarkan jumlah page views.
-- Membandingkan pola artikel nasional dan internasional berdasarkan peristiwa yang sedang berlangsung.
-- Mengevaluasi karakteristik Big Data menggunakan delapan aspek (8V).
+Hasil validasi menunjukkan bahwa seluruh atribut telah memiliki format yang konsisten sehingga data dapat digunakan secara langsung pada proses analisis tanpa memerlukan perubahan struktur tambahan.
 
----
+# Variability
 
-# Dataset
+Variability menggambarkan tingkat perubahan nilai data dari waktu ke waktu.
 
-Dataset yang digunakan adalah Wikipedia Page Views dataset, dengan karakteristik:
+Berdasarkan hasil analisis, jumlah page views pada setiap artikel menunjukkan pola yang berbeda-beda. Beberapa artikel mengalami lonjakan yang sangat tinggi ketika suatu peristiwa besar terjadi, sedangkan artikel lain memiliki jumlah views yang relatif stabil sepanjang waktu.
 
-1. Data kunjungan artikel Wikipedia.
+Perbedaan pola tersebut menunjukkan bahwa perilaku pengguna Wikipedia sangat dipengaruhi oleh isu dan peristiwa aktual sehingga karakteristik variability pada dataset tergolong tinggi.
 
-2. Terdiri dari beberapa artikel Wikipedia.
+# Visualization
 
-3. Data berbentuk time-series.
+Visualisasi dilakukan untuk mempermudah interpretasi terhadap data yang telah dianalisis.
 
-4. Memiliki informasi timestamp dan jumlah views.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Dataset pada tahap EAS merupakan hasil penggabungan antara dataset Wikipedia Page Views (English) dan data hasil scraping Wikipedia Indonesia.
-
-Karakteristik dataset setelah pengembangan adalah sebagai berikut:
-
-- Dataset gabungan Wikipedia English dan Indonesia.
-- Sekitar **125 juta baris data**.
-- Ukuran file sekitar **3,96 GB**.
-- Memiliki **3 atribut utama**, yaitu:
-  - **article**
-  - **timestamp**
-  - **views**
-- Seluruh proses analisis dilakukan menggunakan **Polars LazyFrame** sehingga mampu menangani dataset berukuran besar dengan penggunaan memori yang lebih efisien dibandingkan pendekatan DataFrame biasa.
-
----
-# Big Data Characteristics (5V + 3V)
-
-## • Volume
-
-Dataset memiliki sekitar 64,9 juta baris data dengan 6 kolom utama dan penggunaan memori mencapai ±2.9 GB. Jumlah data yang besar ini menunjukkan bahwa dataset termasuk dalam kategori big data dari aspek volume.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Pada tahap EAS dilakukan scraping data Wikipedia bahasa Indonesia menggunakan Wikimedia Pageviews API, kemudian hasil scraping digabungkan dengan dataset Wikipedia English. Hasil penggabungan tersebut menghasilkan dataset baru dengan sekitar **125 juta baris data** dan ukuran file sekitar **3,96 GB**.
-
-Walaupun jumlah atribut utama menjadi **3 kolom (article, timestamp, dan views)**, peningkatan jumlah baris hampir dua kali lipat membuat volume data menjadi jauh lebih besar dibandingkan tahap sebelumnya. Dataset hasil penggabungan memberikan cakupan informasi yang lebih luas karena mencakup artikel Wikipedia dari dua bahasa yang berbeda.
-
-Selain itu, ukuran data yang semakin besar menyebabkan proses analisis menggunakan Pandas menjadi kurang efisien. Oleh karena itu, seluruh proses preprocessing dan analisis dilakukan menggunakan **Polars LazyFrame**, sehingga penggunaan memori menjadi lebih hemat dan proses komputasi tetap berjalan dengan baik meskipun dataset berukuran hampir 4 GB.
-
----
-
-## • Velocity
-
-Dari timestamp, terlihat bahwa data diperbarui setiap hari dengan interval yang konsisten (±1 hari), dan seluruh data tercatat pada jam yang sama (00:00). Ini menunjukkan bahwa data masuk secara rutin dan terjadwal.
-
-Selain itu, dari grafik terlihat bahwa jumlah views terus berubah dari waktu ke waktu. Ada pola naik turun dan beberapa lonjakan pada periode tertentu. Meskipun sudah dihaluskan, perubahan tersebut tetap terlihat jelas. Gabungan antara pembaruan data yang rutin dan perubahan nilai yang terus terjadi menunjukkan bahwa data memiliki velocity tinggi.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Karakteristik velocity tetap dipertahankan setelah dilakukan penggabungan dataset. Data Wikipedia Indonesia juga memiliki timestamp yang diperbarui secara berkala sehingga pola perubahan data tetap dapat diamati berdasarkan waktu.
-
-Selain itu, bertambahnya artikel Indonesia memungkinkan analisis terhadap perubahan perhatian masyarakat Indonesia terhadap suatu topik. Sebagai contoh, artikel **Prabowo Subianto** menunjukkan peningkatan jumlah page views pada periode yang berkaitan dengan Pemilu Presiden 2024 dan pelantikan Presiden. Hal ini menunjukkan bahwa perubahan data berlangsung secara dinamis mengikuti peristiwa yang sedang terjadi.
-
----
-
-## • Variety
-
-Dataset terdiri dari 6 kolom yang mencakup berbagai jenis data, seperti nama artikel (article), waktu akses (timestamp), jumlah kunjungan (views), serta hasil turunan waktu (year, month, day). Dari sisi isi, data yang digunakan juga beragam karena mencakup banyak artikel yang berbeda dengan jumlah views yang bervariasi pada setiap waktu.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Pada tahap EAS, variasi data tidak hanya berasal dari atribut dataset, tetapi juga dari sumber dan bahasa data yang digunakan.
-
-Dataset hasil penggabungan mencakup artikel Wikipedia berbahasa Inggris dan Indonesia sehingga topik yang dianalisis menjadi lebih beragam. Analisis tidak lagi terbatas pada artikel internasional seperti **Donald Trump**, tetapi juga mencakup artikel nasional seperti **Prabowo Subianto**.
-
-Walaupun dataset akhir hanya memiliki tiga atribut utama (article, timestamp, dan views), keberagaman isi data meningkat secara signifikan karena mencakup lebih banyak artikel dari dua versi Wikipedia yang berbeda.
-
----
-
-## • Veracity
-
-Sebelum dilakukan proses cleaning, dataset memiliki 82.486.038 data dengan 16.787.538 data duplikat dan 7.674 missing value pada kolom article. Kondisi ini menunjukkan bahwa data awal masih memiliki tingkat keakuratan dan keandalan yang rendah karena adanya data ganda dan nilai yang hilang.
-
-Setelah dilakukan preprocessing, jumlah data menjadi 64.944.259, dengan duplikat dan missing value berhasil dihilangkan (0). Hal ini menunjukkan bahwa kualitas data telah meningkat, sehingga data menjadi lebih akurat, konsisten, dan dapat diandalkan untuk analisis lebih lanjut.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Tahap preprocessing juga diterapkan pada dataset hasil penggabungan Wikipedia English dan Indonesia. Proses tersebut meliputi pengecekan missing value, data duplikat, kesesuaian tipe data, serta validasi struktur dataset.
-
-Karena ukuran dataset mencapai hampir 4 GB, proses preprocessing dilakukan menggunakan **Polars LazyFrame** agar lebih efisien dalam penggunaan memori. Hasil preprocessing menunjukkan bahwa dataset siap digunakan untuk analisis Big Data dengan kualitas data yang tetap terjaga.
-
----
-
-## • Value
-
-Berdasarkan hasil analisis, diperoleh beberapa top artikel dengan jumlah views tertinggi. Artikel Donald_Trump menempati posisi pertama dengan total 297.839.586 views, diikuti oleh Cleopatra dengan 261.053.158 views, serta YouTube dengan 251.416.404 views. Hal ini menunjukkan bahwa ketiga artikel tersebut merupakan konten yang paling banyak diminati oleh pengguna.
-
-Kemudian Berdasarkan grafik tren views artikel Donald_Trump, terlihat lonjakan views yang sangat signifikan pada beberapa periode tertentu. Spike tertinggi terjadi sekitar tahun 2016-2017, yang bertepatan dengan masa kampanye dan kemenangan Donald Trump dalam Pemilu Presiden Amerika Serikat 2016. Lonjakan kedua terlihat sekitar 2021, yang kemungkinan berkaitan peristiwa Capitol Hill pada Januari 2021. Setelah periode tersebut, jumlah views cenderung menurun namun masih mengalami kenaikan kecil pada momen-momen tertentu. Hal ini menunjukkan bahwa minat pengguna terhadap artikel Donald Trump sangat erat kaitannya dengan peristiwa politik yang sedang berlangsung.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Nilai (Value) dari dataset semakin meningkat setelah ditambahkan data Wikipedia Indonesia. Analisis tidak hanya dapat dilakukan terhadap artikel internasional, tetapi juga terhadap artikel nasional yang memiliki keterkaitan dengan peristiwa penting di Indonesia.
-
-Salah satu contoh yang dianalisis adalah artikel **Prabowo Subianto**, yang menunjukkan perubahan jumlah page views pada periode tertentu. Dengan adanya artikel Indonesia, dataset menjadi lebih bermanfaat untuk memahami bagaimana perhatian masyarakat berubah terhadap suatu tokoh atau peristiwa, baik dalam lingkup nasional maupun internasional.
-
-Selain itu, hasil analisis juga dimanfaatkan dalam pembuatan dashboard interaktif sehingga informasi yang diperoleh lebih mudah dipahami dan dapat dieksplorasi secara visual.
-
-# Insight Sementara
-
-Berdasarkan tren views artikel World_War_II, artikel ini memiliki views yang relatif stabil di angka 20.000–40.000 per hari. Spike tertinggi terjadi sekitar 2022, kemungkinan berkaitan dengan invasi Rusia ke Ukraina yang memicu pengguna membandingkan konflik tersebut dengan Perang Dunia II.
-
-Berbeda dengan Donald Trump yang spikenya tajam lalu turun drastis, World_War_II memiliki baseline views yang konsisten sepanjang waktu. Hal ini menunjukkan bahwa perilaku pengguna terbagi dua — ada topik yang viral sesaat, dan ada topik yang selalu relevan sepanjang masa.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Setelah dataset Wikipedia Indonesia digabungkan, insight yang diperoleh menjadi lebih beragam. Analisis tidak hanya berfokus pada artikel internasional, tetapi juga dapat dilakukan terhadap artikel nasional.
-
-Sebagai contoh, artikel **Prabowo Subianto** menunjukkan perubahan jumlah page views pada periode-periode penting seperti Pemilu Presiden Indonesia tahun 2024 dan pelantikan Presiden. Hasil tersebut menunjukkan bahwa pola pencarian informasi masyarakat Indonesia juga sangat dipengaruhi oleh peristiwa aktual.
-
-Dengan adanya dua sumber data (Wikipedia English dan Wikipedia Indonesia), analisis mampu memberikan gambaran yang lebih luas mengenai perubahan perhatian masyarakat terhadap isu nasional maupun internasional.
-
----
-
-# Pengembangan Analisis (Tambahan Dataset)
-
-Dataset tambahan berasal dari Kaggle dan berisi 100 artikel Wikipedia dengan views tertinggi yang diperbarui setiap hari. Berbeda dengan dataset utama yang mencakup seluruh artikel, dataset ini berfokus pada artikel yang sedang populer dan memiliki atribut rank serta kolom date yang lebih jelas, sehingga mempermudah analisis tren harian.
-
-Dengan menggabungkan keduanya, analisis menjadi lebih komprehensif — dataset utama memberikan gambaran tren jangka panjang, sementara dataset tambahan membantu mengidentifikasi artikel yang sedang trending. Kombinasi ini meningkatkan keampuhan analisis dalam memprediksi popularitas artikel di masa mendatang.
-
-### 🚀 Pengembangan pada Tahap EAS
-
-Selain pengembangan di atas, tahap EAS juga menambahkan beberapa pengembangan baru, yaitu:
-
-- Melakukan scraping Wikipedia Indonesia menggunakan Wikimedia Pageviews API.
-- Menggabungkan dataset Wikipedia English dan Wikipedia Indonesia menjadi satu dataset.
-- Mengoptimalkan proses preprocessing menggunakan **Polars LazyFrame** agar mampu menangani dataset berskala besar dengan penggunaan memori yang lebih efisien.
-- Mengembangkan analisis karakteristik Big Data dari **5V + 3V** menjadi **8V**.
-- Menambahkan dashboard interaktif berbasis web sebagai media visualisasi hasil analisis.
-- Menambahkan analisis terhadap artikel Indonesia seperti **Prabowo Subianto** sebagai pembanding terhadap artikel internasional.
-- Mengembangkan visualisasi tren artikel berdasarkan page views untuk memperoleh insight yang lebih mudah dipahami.
-
----
-
-# Pengembangan Big Data Characteristics (8V)
-
-Tahap EAS memperluas analisis Big Data dengan menambahkan tiga karakteristik baru sehingga analisis tidak hanya mencakup 5V, tetapi menjadi **8V**.
-
-## • Validity
-
-Validity menunjukkan bahwa data yang digunakan benar-benar sesuai dengan tujuan analisis. Pada tahap EAS dilakukan pengecekan tipe data, struktur dataset, serta kesesuaian nilai pada setiap atribut.
-
-Kolom **article**, **timestamp**, dan **views** berhasil tervalidasi dengan baik sehingga seluruh data dapat digunakan pada proses analisis tanpa mengalami inkonsistensi format.
-
----
-
-## • Variability
-
-Variability menggambarkan perubahan nilai data dari waktu ke waktu.
-
-Hasil analisis menunjukkan bahwa jumlah page views mengalami perubahan yang dinamis mengikuti berbagai peristiwa yang sedang berlangsung. Beberapa artikel mengalami lonjakan yang sangat tinggi pada periode tertentu, sedangkan artikel lainnya memiliki pola yang relatif stabil.
-
-Perbedaan pola tersebut menunjukkan bahwa perhatian pengguna Wikipedia dapat berubah secara signifikan tergantung pada isu atau peristiwa yang sedang terjadi.
-
----
-
-## • Visualization
-
-Visualization dilakukan melalui berbagai bentuk visualisasi data, antara lain:
+Pada tahap EAS dibuat berbagai visualisasi, antara lain:
 
 - Perbandingan volume dataset UTS dan EAS.
-- Grafik pertumbuhan jumlah data per tahun.
+- Grafik pertumbuhan jumlah record.
 - Grafik tren page views.
 - Top artikel berdasarkan jumlah views.
+- Visualisasi karakteristik Big Data.
 - Dashboard interaktif berbasis web.
 
-Visualisasi tersebut mempermudah proses eksplorasi data serta membantu dalam memahami pola perubahan popularitas artikel secara lebih intuitif.
+Visualisasi tersebut membantu pengguna memahami pola perubahan popularitas artikel secara lebih cepat dibandingkan hanya melihat data mentah.
+
+# 📊 Hasil Analisis
+
+## Hasil Analisis UTS
+
+Pada tahap UTS, analisis difokuskan pada dataset Wikipedia English sehingga sebagian besar artikel dengan jumlah page views tertinggi berasal dari artikel internasional.
+
+Hasil analisis menunjukkan bahwa **Donald_Trump** menjadi artikel dengan jumlah views tertinggi. Grafik tren juga memperlihatkan beberapa lonjakan (spike) yang bertepatan dengan peristiwa politik besar di Amerika Serikat, seperti Pemilu Presiden Amerika Serikat tahun 2016 serta peristiwa Capitol Hill tahun 2021.
+
+Selain itu, artikel **World_War_II** menunjukkan pola yang berbeda. Jumlah views artikel ini relatif stabil sepanjang waktu dengan beberapa lonjakan ketika terjadi konflik internasional, misalnya invasi Rusia ke Ukraina. Hal tersebut menunjukkan bahwa terdapat artikel yang selalu relevan sepanjang waktu (evergreen content), berbeda dengan artikel yang hanya populer ketika suatu peristiwa sedang berlangsung.
 
 ---
 
-# Dashboard
+## 🚀 Hasil Analisis EAS
 
-Untuk mempermudah eksplorasi hasil analisis, dibuat dashboard interaktif yang menampilkan berbagai visualisasi hasil pengolahan data.
+Tahap EAS memperluas ruang lingkup analisis dengan menggabungkan dataset Wikipedia English dan Wikipedia Indonesia.
+
+Analisis tidak lagi hanya berfokus pada artikel internasional, tetapi juga mencakup artikel yang berkaitan dengan tokoh nasional Indonesia.
+
+Salah satu artikel yang dianalisis adalah **Prabowo Subianto**. Berdasarkan hasil visualisasi page views, artikel tersebut mengalami perubahan jumlah kunjungan pada periode-periode penting, seperti menjelang Pemilu Presiden Indonesia tahun 2024 serta pelantikan Presiden Republik Indonesia.
+
+Hasil tersebut menunjukkan bahwa peningkatan jumlah page views sangat dipengaruhi oleh peristiwa aktual yang sedang terjadi. Ketika perhatian masyarakat meningkat terhadap suatu tokoh atau isu tertentu, jumlah kunjungan ke artikel Wikipedia terkait juga mengalami peningkatan.
+
+Selain analisis terhadap artikel individu, dilakukan pula identifikasi artikel dengan total page views tertinggi pada dataset gabungan. Analisis ini memberikan gambaran mengenai artikel yang paling banyak diakses oleh pengguna Wikipedia selama periode pengamatan.
+
+# 🌐 Dashboard
+
+Sebagai pengembangan dari tahap UTS, pada tahap EAS dibangun sebuah dashboard interaktif berbasis web untuk mempermudah eksplorasi hasil analisis.
 
 Dashboard dapat diakses melalui:
 
 https://khai2094.github.io/dashboard-gacha/
 
-Dashboard menampilkan beberapa informasi penting, seperti:
+Dashboard menampilkan berbagai informasi penting, antara lain:
 
 - Statistik dataset.
-- Artikel dengan jumlah views tertinggi.
+- Ringkasan karakteristik Big Data.
+- Visualisasi artikel dengan jumlah views tertinggi.
 - Grafik tren page views.
-- Visualisasi karakteristik Big Data.
-- Ringkasan hasil analisis.
+- Perbandingan volume dataset.
+- Hasil analisis artikel Wikipedia.
 
----
+Dashboard dibuat agar proses eksplorasi data tidak hanya dilakukan melalui notebook Python, tetapi juga dapat diakses secara interaktif melalui browser.
 
-# Kesimpulan
+# 🛠 Tech Stack
 
-Proyek ini berhasil mengembangkan analisis Wikipedia Page Views dari tahap UTS menjadi tahap EAS melalui proses scraping, penggabungan dataset, preprocessing, serta pengembangan analisis Big Data.
+Proyek ini dikembangkan menggunakan beberapa teknologi berikut.
 
-Penambahan dataset Wikipedia Indonesia meningkatkan volume data menjadi sekitar **125 juta baris** dengan ukuran sekitar **3,96 GB**, sehingga analisis menjadi lebih komprehensif dibandingkan sebelumnya.
+| Teknologi | Kegunaan |
+|-----------|-----------|
+| Python | Pemrograman utama |
+| Polars | Pengolahan Big Data |
+| Pandas | Analisis data |
+| NumPy | Operasi numerik |
+| Matplotlib | Visualisasi data |
+| Kaggle | Dataset utama |
+| Wikimedia Pageviews API | Scraping Wikipedia Indonesia |
+| GitHub Pages | Dashboard |
+| Jupyter Notebook | Eksperimen dan analisis |
 
-Selain itu, penerapan **Polars LazyFrame** memungkinkan proses pengolahan dataset berskala besar dilakukan secara lebih efisien tanpa mengalami kendala penggunaan memori.
+# 📁 Repository Structure
 
-Pengembangan karakteristik Big Data dari **5V + 3V** menjadi **8V**, penambahan dashboard interaktif, serta analisis terhadap artikel Indonesia seperti **Prabowo Subianto** memberikan insight yang lebih luas mengenai perubahan perhatian masyarakat terhadap suatu topik berdasarkan data Wikipedia Page Views.
+```
+Wikipedia-PageViews-Analysis/
+│
+├── dataset/
+│   ├── wikipedia_english.csv
+│   ├── wikipedia_indonesia.csv
+│   └── dataset_gabungan.csv
+│
+├── notebook/
+│   ├── preprocessing.ipynb
+│   ├── analysis.ipynb
+│   └── visualization.ipynb
+│
+├── dashboard/
+│
+├── images/
+│
+├── README.md
+│
+└── requirements.txt
+```
 
-Secara keseluruhan, proyek ini menunjukkan bahwa data Wikipedia Page Views dapat dimanfaatkan sebagai salah satu sumber Big Data untuk menganalisis tren, perilaku pengguna, serta perubahan popularitas suatu artikel berdasarkan waktu.
+# 🎯 Kesimpulan
+
+Proyek ini berhasil mengembangkan analisis Wikipedia Page Views dari tahap UTS menjadi tahap EAS melalui proses scraping, penggabungan dataset, preprocessing, visualisasi, serta pengembangan analisis Big Data.
+
+Pada tahap UTS, analisis dilakukan menggunakan dataset Wikipedia English dengan fokus pada karakteristik Big Data 5V dan pengamatan tren artikel internasional, seperti Donald Trump dan World War II.
+
+Tahap EAS memperluas analisis dengan melakukan scraping Wikipedia Indonesia menggunakan Wikimedia Pageviews API, kemudian menggabungkannya dengan dataset Wikipedia English sehingga menghasilkan dataset gabungan dengan volume sekitar **125 juta baris** dan ukuran sekitar **3,96 GB**.
+
+Selain peningkatan volume data, tahap EAS juga mengembangkan analisis menjadi **8V**, yaitu dengan menambahkan aspek **Validity**, **Variability**, dan **Visualization**. Penggunaan **Polars LazyFrame** memungkinkan proses pengolahan dataset berskala besar dilakukan secara lebih efisien tanpa membebani memori.
+
+Pengembangan lainnya meliputi analisis artikel Indonesia seperti **Prabowo Subianto**, visualisasi tren page views, serta pembangunan dashboard interaktif berbasis web untuk mempermudah eksplorasi hasil analisis.
+
+Secara keseluruhan, proyek ini menunjukkan bahwa data Wikipedia Page Views dapat dimanfaatkan sebagai sumber Big Data untuk menganalisis pola akses pengguna, mengidentifikasi artikel yang sedang populer, memahami pengaruh suatu peristiwa terhadap perubahan jumlah kunjungan artikel, serta mendukung pengambilan insight berbasis data.
+
+> **📌 Progress Project**
+>
+> ✅ UTS : Analisis Wikipedia English (5V + Time Series Analysis)
+>
+> ✅ EAS : Scraping Wikipedia Indonesia + Dataset Gabungan + Analisis 8V + Dashboard Interaktif
+>
+> 
